@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" id="input1" />
+    <button onclick="arrayPush()">add value</button>
+    <div id="arrayDis"></div>
+    <script>
+      let Array = ["one", "two", "three"];
+      arrayDis.innerHTML = Array.join("<br>");
+
+      function arrayPush() {
+        let add1 = input1.value;
+
+        if (Array.length < 5) {
+          if (Array.includes(add1)) {
+            alert("noooooo");
+            
+          } else {
+            Array.push(add1);
+            displayArray()
+          }
+        } else {
+          alert("no more place sorry:(");
+         
+        }
+      }
+
+      function displayArray() {
+        arrayDis.innerHTML = organise();
+      }
+
+      function deleteElement(index) {
+      Array.splice(index, 1); // Remove element at given index
+      displayArray();
+    }
+
+      function organise() {
+        let finalHTML = "";
+        for (let i = 0; i < Array.length; i++) {
+          const element = Array[i];
+          let elementHTML =
+            "<div>" +
+            (i + 1 + ".") +
+            element +
+            '<button onclick="deleteElement('+i+')">Delete</button></div>';
+          finalHTML = finalHTML + elementHTML;
+        }
+        return finalHTML;
+      }
+      console.log(Array);
+      displayArray();
+    </script>
+  </body>
+</html>
